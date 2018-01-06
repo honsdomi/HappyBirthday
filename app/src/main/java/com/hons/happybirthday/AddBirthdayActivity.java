@@ -1,14 +1,19 @@
 package com.hons.happybirthday;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.hons.happybirthday.domain.BirthdayBuilder;
 import com.hons.happybirthday.domain.BirthdayHolder;
@@ -33,6 +38,18 @@ public class AddBirthdayActivity extends AppCompatActivity {
         addBirthdayButton = findViewById(R.id.addBirthdayButton);
 
         dateEditText.setInputType(InputType.TYPE_NULL);
+
+        nameEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+                    if (inputMethodManager != null) {
+                        inputMethodManager.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                    }
+                }
+            }
+        });
 
         Calendar newCalendar = Calendar.getInstance();
         datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
