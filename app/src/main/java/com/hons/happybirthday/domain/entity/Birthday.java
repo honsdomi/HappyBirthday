@@ -10,6 +10,16 @@ public class Birthday {
     private int month;
     private int day;
 
+    public Birthday() {
+    }
+
+    public Birthday(String name, int year, int month, int day) {
+        this.name = name;
+        this.year = year;
+        this.month = month;
+        this.day = day;
+    }
+
     public String getName() {
         return name;
     }
@@ -40,5 +50,9 @@ public class Birthday {
 
     public void setDay(int day) {
         this.day = day;
+    }
+
+    public String getFormatedBirthday() {
+        return String.format("%s.%s.%s", day, month, year);
     }
 }

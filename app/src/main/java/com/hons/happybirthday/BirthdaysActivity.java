@@ -8,16 +8,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.hons.happybirthday.domain.BirthdayHolder;
 import com.hons.happybirthday.domain.entity.Birthday;
 
 
 public class BirthdaysActivity extends AppCompatActivity {
-    public static final String EXTRA_MESSAGE = "com.hons.happybirthday.MESSAGE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +34,7 @@ public class BirthdaysActivity extends AppCompatActivity {
         });
 
         LinearLayout birthdaysLayout = findViewById(R.id.birthdaysLayout);
-        for (Birthday birthday : BirthdayHolder.getInstance().getBirthdays()) {
+        for (Birthday birthday : BirthdayHolder.getInstance(this).getBirthdays()) {
             TextView textView = new TextView(birthdaysLayout.getContext());
             String text = String.format("%s: %s.%s.%s",
                     birthday.getName(), birthday.getDay(),
