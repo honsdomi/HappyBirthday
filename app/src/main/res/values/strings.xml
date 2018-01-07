@@ -6,4 +6,6 @@
     <string name="button_add_birthday">Add birthday</string>
     <string name="enter_name">Enter a name</string>
     <string name="enter_date">Enter a date</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>

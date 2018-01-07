@@ -5,17 +5,14 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.view.View;
 
-import com.hons.happybirthday.domain.BirthdayHolder;
 import com.hons.happybirthday.domain.entity.Birthday;
 
 
-public class BirthdaysActivity extends AppCompatActivity {
+public class BirthdaysActivity extends AppCompatActivity implements BirthdayFragment.OnListFragmentInteractionListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,16 +29,6 @@ public class BirthdaysActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        LinearLayout birthdaysLayout = findViewById(R.id.birthdaysLayout);
-        for (Birthday birthday : BirthdayHolder.getInstance(this).getBirthdays()) {
-            TextView textView = new TextView(birthdaysLayout.getContext());
-            String text = String.format("%s: %s.%s.%s",
-                    birthday.getName(), birthday.getDay(),
-                    birthday.getMonth(), birthday.getYear());
-            textView.setText(text);
-            birthdaysLayout.addView(textView);
-        }
     }
 
     @Override
@@ -67,4 +54,9 @@ public class BirthdaysActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onListFragmentInteraction(Birthday birthday) {
+        // TODO: 07.01.2018 use for item select interaction
+        System.out.println(birthday);
+    }
 }

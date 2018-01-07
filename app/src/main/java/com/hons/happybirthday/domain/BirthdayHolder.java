@@ -37,6 +37,13 @@ public class BirthdayHolder {
         editor.apply();
     }
 
+    public void deleteBirthDay(Birthday birthday) {
+        birthdays.remove(birthday);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.remove(birthday.getName());
+        editor.apply();
+    }
+
     private void initBirthdays(Context context) {
         sharedPreferences = context.getSharedPreferences(BIRTHDAY_PREFERENCES, Context.MODE_PRIVATE);
         for (String name : sharedPreferences.getAll().keySet()) {

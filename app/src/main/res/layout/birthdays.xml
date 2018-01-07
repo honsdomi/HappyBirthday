@@ -5,4 +5,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <fragment
+        android:id="@+id/birthdayFragment"
+        android:name="com.hons.happybirthday.BirthdayFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
 </LinearLayout>
