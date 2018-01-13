@@ -2,10 +2,13 @@ package com.hons.happybirthday.domain;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
+import com.hons.happybirthday.SettingsFragment;
 import com.hons.happybirthday.domain.entity.Birthday;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -17,6 +20,7 @@ public class BirthdayHolder {
     private static BirthdayHolder instance;
     private List<Birthday> birthdays = new ArrayList<>();
     private SharedPreferences sharedPreferences;
+    private SharedPreferences settings;
 
     public static BirthdayHolder getInstance(Context context) {
         if (instance == null) {
@@ -27,6 +31,7 @@ public class BirthdayHolder {
     }
 
     public List<Birthday> getBirthdays() {
+        Collections.sort(birthdays, SettingsFragment.getSortByComparator(settings));
         return birthdays;
     }
 
@@ -54,5 +59,6 @@ public class BirthdayHolder {
             Birthday birthday = new Birthday(name, year, month, day);
             instance.birthdays.add(birthday);
         }
+        settings = PreferenceManager.getDefaultSharedPreferences(context);
     }
 }

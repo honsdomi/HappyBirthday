@@ -21,7 +21,15 @@
         </activity>
         <activity
             android:name=".AddBirthdayActivity"
-            android:parentActivityName=".BirthdaysActivity" />
+            android:parentActivityName=".BirthdaysActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.hons.happybirthday.BirthdaysActivity" />
+        </activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:parentActivityName=".BirthdaysActivity">
+        </activity>
     </application>
 
 </manifest>

@@ -8,4 +8,7 @@
     <string name="enter_date">Enter a date</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="sort_by">Sort by</string>
+    <string name="sort_by_name">Name</string>
+    <string name="sort_by_date">Date</string>
 </resources>
